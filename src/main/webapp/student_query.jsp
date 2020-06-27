@@ -40,14 +40,14 @@
     <table border="1px">
         <tr>
             <td width="100px">编号</td>
-            <td width="100px">学号</td>
+            <td width="100px">卡号</td>
             <td width="100px">姓名</td>
             <td width="50px">性别</td>
             <td width="50px">年龄</td>
-            <td width="100px">大学</td>
-            <td width="100px">院系</td>
-            <td width="100px">专业</td>
-            <td width="100px">年级</td>
+            <td width="100px">开通时间</td>
+            <td width="100px">持续时间</td>
+            <td width="100px">到期时间</td>
+            <td width="100px">啦啦啦</td>
             <td width="50px">修改</td>
             <td width="50px">删除</td>
         </tr>
