@@ -10,6 +10,20 @@
             <result name="success">/success.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
+        <action name="studentLogin" class="action.StudentLogin">
+            <result name="success">/welcome.jsp</result>
+            <result name="login">/student_login.jsp</result>
+        </action>
+
+        <action name="findScore" class="action.StudentAction" method="findScore">
+            <result name="success">/show_score.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="findCourse" class="action.StudentAction" method="findCourse">
+            <result name="success">/choose_course.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
 
         <action name="findAll" class="action.StudentAction" method="findAll">
             <result name="success">/student_query.jsp</result>
@@ -22,6 +36,17 @@
             <result name="error">/error.jsp</result>
         </action>
 
+        <!--根据学院模糊查询课程信息-->
+        <action name="findBySDept" class="action.StudentAction" method="findBySDept">
+            <result name="success">/show_score.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <!--根据姓名模糊查询课程信息-->
+        <action name="findBySName" class="action.StudentAction" method="findBySName">
+            <result name="success">/show_score.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
 
         <!--根据学院模糊查询学生信息-->
         <action name="findByDept" class="action.StudentAction" method="findByDept">
@@ -41,6 +66,10 @@
             <result name="error">/error.jsp</result>
         </action>
 
+        <action name="choose" class="action.StudentAction" method="choose">
+            <result name="success">/show_course</result>
+            <result name="error">/error.jsp</result>
+        </action>
 
         <!--删除学生信息-->
         <action name="delete" class="action.StudentAction" method="delete">
@@ -48,5 +77,19 @@
             <result name="error">/error.jsp</result>
         </action>
 
+        <action name="showStudent" class="action.StudentLogin" method="showStudent">
+            <result name="success">/show_student.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="Delete" class="action.StudentAction" method="Delete">
+            <result name="success" type="chain">findSourse</result>
+            <result name="error">/error.jsp</result>
+        </action>
+
+        <action name="findSourse" class="action.StudentAction" method="findSourse">
+        <result name="success">/show_course.jsp</result>
+        <result name="error">/error.jsp</result>
+        </action>
     </package>
 </struts>

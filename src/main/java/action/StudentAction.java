@@ -1,19 +1,22 @@
 package action;
 
-
-import PO.Vip;
+import PO.Course;
+import PO.Score;
+import PO.Student;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.HbnUtils;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.Session;
-
+import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Map;
 
 public class StudentAction extends ActionSupport implements SessionAware {
 
-    private Vip stu;
+    private Student stu;
+    private Score sre;
+    private Course dep;
     private Map<String, Object> session;
     private String sno;
     private String password;
@@ -22,7 +25,7 @@ public class StudentAction extends ActionSupport implements SessionAware {
     List<String> sreList;
 
     public String findAll(){
-        String hql = "from Vip";
+        String hql = "from Student";
         System.out.println(hql);
         //HQL查询所有学生信息
         Session hbnSession = HbnUtils.getSession();
@@ -36,9 +39,45 @@ public class StudentAction extends ActionSupport implements SessionAware {
             return "error";
     }
 
+    public String findScore(){
+        String hql = "from Score";
+        System.out.println(hql);
+        Session hbnSession = HbnUtils.getSession();
+        hbnSession.beginTransaction();
+        sreList = hbnSession.createQuery(hql).list();
+        session.put("sreList",this.sreList);
+        hbnSession.getTransaction().commit();
+        if (sreList != null) {
+            return "success";
+        }else
+            return "error";
+    }
 
+    public String findCourse(){
+        String lql = "from Score ";
+        Session hbnSession = HbnUtils.getSession();
+        hbnSession.beginTransaction();
+        sreList = hbnSession.createQuery(lql).list();
+        session.put("sreList",this.sreList);
+        hbnSession.getTransaction().commit();
+        if (sreList != null) {
+            return "success";
+        }else
+            return "error";
+    }
 
-
+    public String findSourse(){
+        String lql = "from Course ";
+        Session hbnSession = HbnUtils.getSession();
+        hbnSession.beginTransaction();
+        deptList = hbnSession.createQuery(lql).list();
+        session.put("deptList",this.deptList);
+        hbnSession.getTransaction().commit();
+        if (deptList != null) {
+            return "success";
+        }else
+            return "error";
+    }
 
     //添加学生信息
     public String insert(){
@@ -85,12 +124,25 @@ public class StudentAction extends ActionSupport implements SessionAware {
         }
     }
 
+    public String Delete(){
+        try {
+            Session hbnSession = HbnUtils.getSession();
+            hbnSession.beginTransaction();
+            System.out.println("delete id="+dep.getSno());
+            hbnSession.delete(dep);
+            hbnSession.getTransaction().commit();
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 
 
 
     //根据姓名查询学生信息
     public String findByName(){
-        String hql = "from Vip where name like ?0";
+        String hql = "from Student where name like ?0";
         System.out.println(hql);
         Session hbnSession = HbnUtils.getSession();
         hbnSession.beginTransaction();
@@ -103,10 +155,24 @@ public class StudentAction extends ActionSupport implements SessionAware {
             return "error";
     }
 
+    //根据姓名查询课程信息
+    public String findBySName(){
+        String hql = "from Score where name like ?0";
+        System.out.println(hql);
+        Session hbnSession = HbnUtils.getSession();
+        hbnSession.beginTransaction();
+        sreList = hbnSession.createQuery(hql).setParameter(0,"%" + sre.getName() + "%").list();
+        session.put("sreList",this.sreList);
+        hbnSession.getTransaction().commit();
+        if (sreList !=null){
+            return "success";
+        }else
+            return "error";
+    }
 
     //根据学院查询学生信息
     public String findByDept(){
-        String hql = "from Vip where department like ?0";
+        String hql = "from Student where department like ?0";
         System.out.println(hql);
         Session hbnSession = HbnUtils.getSession();
         hbnSession.beginTransaction();
@@ -119,15 +185,30 @@ public class StudentAction extends ActionSupport implements SessionAware {
             return "error";
     }
 
+    //根据学院查询课程信息
+    public String findBySDept(){
+        String hql = "from Score where major like ?0";
+        System.out.println(hql);
+        Session hbnSession = HbnUtils.getSession();
+        hbnSession.beginTransaction();
+        sreList = hbnSession.createQuery(hql).setParameter(0,"%" + sre.getMajor() + "%").list();
+        session.put("sreList",this.sreList);
+        hbnSession.getTransaction().commit();
+        if (sreList !=null){
+            return "success";
+        }else
+            return "error";
+    }
 
 
 
 
-    public Vip getStu() {
+
+    public Student getStu() {
         return stu;
     }
 
-    public void setStu(Vip stu) {
+    public void setStu(Student stu) {
         this.stu = stu;
     }
 
@@ -180,5 +261,20 @@ public class StudentAction extends ActionSupport implements SessionAware {
         this.sreList = sreList;
     }
 
+    public Score getSre() {
+        return sre;
+    }
+
+    public void setSre(Score sre) {
+        this.sre = sre;
+    }
+
+    public Course getDep() {
+        return dep;
+    }
+
+    public void setDep(Course dep) {
+        this.dep = dep;
+    }
 }
 
