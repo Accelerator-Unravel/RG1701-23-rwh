@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "23-vip")
+@Table()
 public class Vip implements Serializable {
     private int sid;
     private String sno;
