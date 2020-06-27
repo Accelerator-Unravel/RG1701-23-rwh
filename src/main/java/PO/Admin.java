@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table()
 public class Admin implements Serializable {
     private int adminID;
     private String username;

@@ -6,7 +6,7 @@
   <session-factory>
     <property name="driverClassName">com.mysql.cj.jdbc.Driver</property>
     <property name="url">
-      jdbc:mysql://localhost:3306/student_ms?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2b8
+      jdbc:mysql://localhost:3306/rg1701-23-rwh?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2b8
     </property>
     <property name="username">root</property>
     <property name="password">123456</property>
@@ -25,8 +25,7 @@
     <property name="format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <!-- 注册实体类 全限定类名 -->
-    <mapping class="PO.Student"/>
+    <mapping class="PO.Vip"/>
     <mapping class="PO.Admin"/>
-    <mapping class="PO.Score"/>
   </session-factory>
 </hibernate-configuration>
