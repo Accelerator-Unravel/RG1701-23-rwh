@@ -22,7 +22,7 @@
     <title>学生信息管理系统SH</title>
 </head>
 <body>
-<center><h1 style="color: red">基于Struts2+Hibernate的学生选课管理系统</h1></center>
+<center><h1 style="color: red">基于Struts2+Hibernate的会员信息管理系统</h1></center>
 <div id="login-box">
     <h1>Admin</h1>
 <s:form action="adminLogin" method="POST">
