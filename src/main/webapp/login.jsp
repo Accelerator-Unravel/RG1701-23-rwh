@@ -15,11 +15,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
     <style type="text/css">
         body{
-            background-image: url("images/back.png");
+            background-image: url("images/back .png");
         }
 
     </style>
-    <title>学生信息管理系统SH</title>
+    <title>会员信息管理系统SH</title>
 </head>
 <body>
 <center><h1 style="color: red">基于Struts2+Hibernate的会员信息管理系统</h1></center>

@@ -12,7 +12,7 @@
     <head>
         <style type="text/css">
             body{
-                background-image: url("images/back.png");
+                background-image: url("images/back .png");
                 background-repeat: no-repeat;
                 background-size: 100% auto;
             }
